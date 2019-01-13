@@ -33,28 +33,6 @@
             var node = document.getElementsByTagName('script')[0];
             node.parentNode.insertBefore(gads, node);
         })();
-        $(function () {
-            $(document).scroll(function (a) {
-                callDfpSlots();
-            });
-        });
-
-        function callDfpSlots() {
-            $('.dfp-lazy-item').each(function () {
-                var _offset = $(this).attr('data-ad-offset'),
-                    _adId = $(this).attr('data-ad-div-id');
-                if (($(window).scrollTop() + $(window).height()) > ($(this).offset().top - _offset)) {
-                    var _controlValue = $(this).attr('data-slot-control-value');
-                    if (_controlValue === "0") {
-                        $(this).attr('data-slot-control-value', "1");
-                        var _comment = $('#' + _adId).html();
-                        var _newHtml = _comment.replace("<!--", "").replace("-->", "");
-                        $('#' + _adId).html(_newHtml);
-                        googletag.cmd.push(function () { googletag.display(_adId); });
-                    }
-                }
-            });
-        }
           googletag.cmd.push(function() {
             var pageskinMapping = googletag.sizeMapping()
                 .addSize([1770, 100], [[160, 600], [120, 600], [220, 800], [300, 600]])
@@ -86,6 +64,39 @@
     <!--Dfp Integration End-->
 </head>
     <body>
+        <!--Dfp Lazy Script Render Start-->
+        <script type="text/javascript">
+            $(function () {
+                var throttle=function(t,a,r){var u,e,i,o=null,c=0;r||(r={});var v=function(){c=!1===r.leading?0:Date.now(),o=null,i=t.apply(u,e),o||(u=e=null)};return function(){var l=Date.now();c||!1!==r.leading||(c=l);var n=a-(l-c);return u=this,e=arguments,n<=0||a<n?(o&&(clearTimeout(o),o=null),c=l,i=t.apply(u,e),o||(u=e=null)):o||!1===r.trailing||(o=setTimeout(v,n)),i}};
+                var browserDeviceType = window.innerWidth < 768 ? "mobile" : "web";
+                $(document).on('scroll.dfpSlotsLazyLoad', throttle(dfpSlotsLazyLoadHandler, 100, {leading: false, trailing: true}));
+                $(window).on('load', dfpSlotsLazyLoadHandler);
+                function dfpSlotsLazyLoadHandler() {
+                    var dfpEls = $('.dfp-lazy-item').not(".completed");
+                    if (dfpEls.length > 0) {
+                        dfpEls.each(function () {
+                            var slotDeviceType = $(this).attr('data-device-type') || "web";
+                            if (browserDeviceType === slotDeviceType) {
+                                var offset = $(this).attr('data-ad-offset');
+                                if (($(window).scrollTop() + $(window).height()) > ($(this).offset().top - offset)) {
+                                    if (!$(this).hasClass('completed')) {
+                                        var adId = $(this).attr('id'),
+                                            commented = $(this).html(),
+                                            uncommented = commented.replace("<!--", "").replace("-->", "");
+                                        $(this).html(uncommented);
+                                        googletag.cmd.push(function () {
+                                            googletag.display(adId);
+                                        });
+                                        $(this).addClass('completed');
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        </script>
+        <!--Dfp Lazy Script Render End-->
         <header>
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
                 <div class="container">
@@ -115,7 +126,7 @@
                 </script>
             </div>
             <!-- /21155722/arabam_web/anasayfa/pageskin_sag_120x600 -->
-            <div id='div-gpt-ad-1455105730386-8'style="z-index: 999999;margin-top:80px;right: calc(50% + 501px);text-align: right;overflow: hidden;position: fixed;top:0;">
+            <div id='div-gpt-ad-1455105730386-8' style="z-index: 999999;margin-top:80px;right: calc(50% + 501px);text-align: right;overflow: hidden;position: fixed;top:0;">
                 <script>
                     googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455105730386-8'); });
                 </script>
@@ -124,6 +135,10 @@
             <main role="main" class="pb-3">
                 @RenderBody()
             </main>
+            <!-- /21155722/arabam_web/arb_w_detail_footer1_300x250 -->
+            <div id="div-gpt-ad-1547030262883-0" data-ad-offset="300" data-ad-div-id="div-gpt-ad-1547030262883-0" data-slot-control-value="0" class="dfp-lazy-item">
+                <!--<script type='text/javascript'>googletag.cmd.push(function(){googletag.defineSlot('/21155722/arabam_web/arb_w_detail_footer1_300x250',[[300, 250], [200, 200], [250, 250], [336, 280]],'div-gpt-ad-1547030262883-0').addService(googletag.pubads());googletag.enableServices();});</script>-->
+            </div>
         </div>
 
         <footer class="border-top footer text-muted">
