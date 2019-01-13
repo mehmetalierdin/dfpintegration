@@ -34,31 +34,37 @@
             node.parentNode.insertBefore(gads, node);
         })();
           googletag.cmd.push(function() {
-            var pageskinMapping = googletag.sizeMapping()
-                .addSize([1770, 100], [[160, 600], [120, 600], [220, 800], [300, 600]])
-                .addSize([1610, 100], [[160, 600], [120, 600], [220, 800]])
-                .addSize([1340, 100], [[160, 600], [120, 600]])
-                .addSize([1260, 100], [[120, 600]])
-                .addSize([0, 0], [])
-                .build();
-            googletag.defineSlot('/21155722/arabam_web/arb_w_header_1014x320', [1014, 320], 'div-gpt-ad-1547032392341-0').addService(googletag.pubads());
-            googletag.defineSlot('/21155722/arabam_web/arb_w_masthead_990x250', [[990, 250], [970, 250]], 'div-gpt-ad-1547031035057-0').addService(googletag.pubads());
-            //pageskin reklamları start
-            googletag.defineSlot('/21155722/arabam_web/arb_w_pageskin_120x600', [[120, 600], [160, 600]], 'div-gpt-ad-1455105730386-7').defineSizeMapping(pageskinMapping).addService(googletag.pubads());
-            googletag.defineSlot('/21155722/arabam_web/arb_w_pageskin_sag_120x600', [[120, 600], [160, 600]], 'div-gpt-ad-1455105730386-8').defineSizeMapping(pageskinMapping).addService(googletag.pubads());
-            //pageskin reklamları end
-            googletag.pubads().enableSingleRequest();
-            googletag.pubads().collapseEmptyDivs(true);
+                var pageskinMapping = googletag.sizeMapping()
+                    .addSize([1770, 100], [[160, 600], [120, 600], [220, 800], [300, 600]])
+                    .addSize([1610, 100], [[160, 600], [120, 600], [220, 800]])
+                    .addSize([1340, 100], [[160, 600], [120, 600]])
+                    .addSize([1260, 100], [[120, 600]])
+                    .addSize([0, 0], [])
+                    .build();
+                googletag.defineSlot('/21155722/arabam_web/arb_w_header_1014x320', [1014, 320], 'div-gpt-ad-1547032392341-0').addService(googletag.pubads());
+                googletag.defineSlot('/21155722/arabam_web/arb_w_masthead_990x250', [[990, 250], [970, 250]], 'div-gpt-ad-1547031035057-0').addService(googletag.pubads());
+                //pageskin reklamları start
+                googletag.defineSlot('/21155722/arabam_web/arb_w_pageskin_120x600', [[120, 600], [160, 600]], 'div-gpt-ad-1455105730386-7').defineSizeMapping(pageskinMapping).addService(googletag.pubads());
+                googletag.defineSlot('/21155722/arabam_web/arb_w_pageskin_sag_120x600', [[120, 600], [160, 600]], 'div-gpt-ad-1455105730386-8').defineSizeMapping(pageskinMapping).addService(googletag.pubads());
+                //pageskin reklamları end
 
-            googletag.enableServices();
-          googletag.pubads().addEventListener('slotRenderEnded', function (event) {
-                var bannerId = event.slot.getSlotId().getDomId();
-                var jqDfpItem = $('#' + bannerId);
-                if (event.isEmpty) {
-                    jqDfpItem.hide();
-                }
-            });
+                googletag.pubads()
+                    .setTargeting("keyword", "dfp_test")
+                    .setTargeting("kategori", "arb_test")
+                    .setTargeting("catlist", "c1_arabam,c2_test");
 
+
+                googletag.pubads().enableSingleRequest();
+                googletag.pubads().collapseEmptyDivs(true);
+
+                googletag.enableServices();
+                googletag.pubads().addEventListener('slotRenderEnded', function (event) {
+                    var bannerId = event.slot.getSlotId().getDomId();
+                    var jqDfpItem = $('#' + bannerId);
+                    if (event.isEmpty) {
+                        jqDfpItem.hide();
+                    }
+                });
           });
     </script>
     <!--Dfp Integration End-->
@@ -109,9 +115,6 @@
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
                         </ul>
                     </div>
