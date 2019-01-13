@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DfpIntegration</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" />
+    </environment>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <!--Dfp Integration Start-->
+    <script type='text/javascript'>
+        var gptLoadComplete = false;
+        var isBlocking = false;
+
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        (function () {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') +
+                '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+        $(function () {
+            $(document).scroll(function (a) {
+                callDfpSlots();
+            });
+        });
+
+        function callDfpSlots() {
+            $('.dfp-lazy-item').each(function () {
+                var _offset = $(this).attr('data-ad-offset'),
+                    _adId = $(this).attr('data-ad-div-id');
+                if (($(window).scrollTop() + $(window).height()) > ($(this).offset().top - _offset)) {
+                    var _controlValue = $(this).attr('data-slot-control-value');
+                    if (_controlValue === "0") {
+                        $(this).attr('data-slot-control-value', "1");
+                        var _comment = $('#' + _adId).html();
+                        var _newHtml = _comment.replace("<!--", "").replace("-->", "");
+                        $('#' + _adId).html(_newHtml);
+                        googletag.cmd.push(function () { googletag.display(_adId); });
+                    }
+                }
+            });
+        }
+          googletag.cmd.push(function() {
+            var pageskinMapping = googletag.sizeMapping()
+                .addSize([1340, 100], [[160, 600], [120, 600], [1, 1]])
+                .addSize([1260, 100], [[120, 600], [1, 1]])
+                .addSize([0, 0], [])
+                .build();
+
+            googletag.defineSlot('/21155722/arabam_web/arb_w_header_1014x320', [1014, 320], 'div-gpt-ad-1547032392341-0').addService(googletag.pubads());
+            googletag.defineSlot('/21155722/arabam_web/arb_w_masthead_990x250', [[990, 250], [970, 250]], 'div-gpt-ad-1547031035057-0').addService(googletag.pubads());
+            //pageskin reklamları start
+            googletag.defineSlot('/21155722/arabam_web/anasayfa/pageskin_120x600', [[120, 600], [160, 600]], 'div-gpt-ad-1455105730386-7').defineSizeMapping(pageskinMapping).addService(googletag.pubads());
+            googletag.defineSlot('/21155722/arabam_web/anasayfa/pageskin_sag_120x600', [[120, 600], [160, 600]], 'div-gpt-ad-1455105730386-8').defineSizeMapping(pageskinMapping).addService(googletag.pubads());
+            //pageskin reklamları end
+            googletag.pubads().enableSingleRequest();
+            googletag.pubads().collapseEmptyDivs(true);
+
+            googletag.enableServices();
+          googletag.pubads().addEventListener('slotRenderEnded', function (event) {
+                var bannerId = event.slot.getSlotId().getDomId();
+                var jqDfpItem = $('#' + bannerId);
+                if (event.isEmpty) {
+                    jqDfpItem.hide();
+                }
+            });
+
+          });
+    </script>
+    <!--Dfp Integration End-->
+</head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DfpIntegration</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            <!-- /21155722/arabam_web/anasayfa/pageskin_120x600 -->
+            <div id='div-gpt-ad-1455105730386-7' style="z-index: 999999;left: calc(50% + 501px);text-align: left;overflow: hidden;position: fixed;top:0;">
+                <script>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455105730386-7'); });
+                </script>
+            </div>
+            <!-- /21155722/arabam_web/anasayfa/pageskin_sag_120x600 -->
+            <div id='div-gpt-ad-1455105730386-8'style="z-index: 999999;right: calc(50% + 501px);text-align: right;overflow: hidden;position: fixed;top:0;">
+                <script>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455105730386-8'); });
+                </script>
+            </div>
+            <partial name="_CookieConsentPartial" />
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2019 - DfpIntegration - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+
+        <environment include="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+            </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
+            </script>
+        </environment>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+        @RenderSection("Scripts", required: false)
+    </body>
+</html>
