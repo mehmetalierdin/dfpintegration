@@ -12087,7 +12087,7 @@
       "projectName": "DfpIntegration",
       "projectPath": "/Users/mehmetalierdin/Projects/DfpIntegration/DfpIntegration/DfpIntegration.csproj",
       "packagesPath": "/Users/mehmetalierdin/.nuget/packages/",
-      "outputPath": "/Users/mehmetalierdin/Projects/DfpIntegration/DfpIntegration/obj",
+      "outputPath": "/Users/mehmetalierdin/Projects/DfpIntegration/DfpIntegration/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -12118,7 +12118,8 @@
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.2.0, )"
+            "version": "[2.2.0, )",
+            "autoReferenced": true
           },
           "Microsoft.AspNetCore.Razor.Design": {
             "suppressParent": "All",
