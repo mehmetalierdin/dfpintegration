@@ -53,7 +53,8 @@ namespace DfpIntegration
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseRouting();
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
