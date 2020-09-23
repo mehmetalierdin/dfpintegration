@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Çelik Piyasası Haberleri</title>
+<meta name="google-play-app" content="app-id=com.steelorbis">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="" /> 
+<link rel="alternate" type="application/rss+xml" title="SteelOrbis RSS Feeds" href="https://tr.test3.steelorbis.com/other-services/rss.htm" />
+<script src="https://tr.test3.steelorbis.com/so/js/jquery-1.9.1.min.js" language="javascript"></script>
+<script type='text/javascript'>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        (function () {
+
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') +
+                '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+
+          googletag.cmd.push(function() {
+                googletag.defineSlot('/26749023/EN_Subpages_Square3_200x200', [200, 200], 'bannerZone73').addService(googletag.pubads());
+
+                googletag.pubads().enableSingleRequest();
+
+                googletag.pubads().collapseEmptyDivs(true);
+
+                googletag.enableServices();
+
+                googletag.pubads().addEventListener('slotRenderEnded', function (event) {
+
+                    var bannerId = event.slot.getSlotId().getDomId();
+
+                    var jqDfpItem = $('#' + bannerId);
+
+                    if (event.isEmpty) {
+
+                        jqDfpItem.hide();
+
+                    }
+                });
+          });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+		 <div id="bannerZone73" style="padding-bottom:15px;">
+        <script>
+               googletag.cmd.push(function() { googletag.display('bannerZone73'); });
+        </script>
+    </div>
+	</div>
+</div>
+</body>
+</html>
